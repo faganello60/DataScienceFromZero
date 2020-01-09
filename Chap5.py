@@ -28,6 +28,7 @@ plt.ylabel('# de pessoas')
 num_points = len(num_friends)
 largest_value = max(num_friends)
 smallest_value = min(num_friends)
+
 print("""=======================
 O tamanho do array é de {}
 O maior valor é de {}
@@ -37,5 +38,30 @@ O menor valor é de {}
 def mean(x):
     return  sum(x) / len(x)
 
-mean(num_friends) # 53.2352941176
+def median(v):
+    n = len(v)
+    sorted_v = sorted(v)
+    midpoint = n // 2
+    if n % 2 == 1:
+        return  sorted_v[midpoint]
+    else:
+        lo = midpoint -1
+        hi = midpoint
+        return  (sorted_v[lo] + sorted_v[hi]) / 2
 
+
+
+print(mean(num_friends)) # 53.2352941176
+print(median(num_friends)) # 55
+
+def quantile(x, p):
+    p_index = int(p * len(x))
+    return sorted(x)[p_index]
+
+print(quantile(num_friends,0.9))
+
+
+def data_range(x):
+    return  max(x) - min(x)
+
+print(data_range(num_friends))
